@@ -26,7 +26,7 @@ namespace searchingCurses
     {
         public ProfanalityFinder(string text)
         {
-            var dictFile = File.ReadAllText("profanitites.txt");
+            var dictFile = File.ReadAllText("profanities.txt");
         }
     }
 }
