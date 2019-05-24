@@ -52,7 +52,7 @@ namespace searchingCurses
         private static string RemoveBadWord(string text, string word)
         {
             var pattern = "\\b" + word + "\\b";
-            return Regex.Replace(text, pattern, "________", RegexOptions.IgnoreCase);
+            return Regex.Replace(text, pattern, "____", RegexOptions.IgnoreCase);
            
             
         }
