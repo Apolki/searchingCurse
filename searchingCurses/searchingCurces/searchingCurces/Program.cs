@@ -10,19 +10,46 @@ namespace searchingCurses
     {
         static void Main(string[] args)
         {
-            /*Console.Write("artist = ");
-            string artist = Console.ReadLine();
-            Console.Write("title = ");
-            string title = Console.ReadLine();*/
-            var songsLyrics = new SongLyrics("Eminem", "Without me");
-            var profanalityFinder = new ProfanalityFinder();
+            var eminem = new Artist("Eminem");
+            eminem.songTitles = new List<string>
+            {
+                "Lose Yourself",
+                "Without Me",
+                "Sing for the Moment",
+            };
+            eminem.ShowProfanityStats();
+            var songsLyrics = new Song("Eminem", "Without me");
+            var profanalityFinder = new ProfanityFinder();
             Console.WriteLine(profanalityFinder.GetBadWordsSummary(songsLyrics));
             // var censored = profanalityFinder.Censore(songsLyrics.lyrics);
-            //var badWordsAmount = profanalityFinder.countBadWords(songsLyrics.lyrics);
-            Console.WriteLine(badWordsAmount);
+           // var badWordsAmount = profanalityFinder.countBadWords(songsLyrics.lyrics);
+           // Console.WriteLine(badWordsAmount);
 
             Console.WriteLine("Done");
             Console.ReadLine();
+        }
+    }
+
+    internal class Artist
+    {
+        public string name;
+        internal List<string> songTitles;
+
+        public Artist(string name)
+        {
+            this.name = name;
+        }
+
+        public void ShowProfanityStats()
+        {
+            var profanityFinder = new ProfanityFinder();
+
+            foreach (var title in songTitles)
+            {
+                var song = new Song(name, title);
+                var profanitiesAmmount = profanityFinder.countBadWords(song.lyrics);
+                Console.WriteLine(song.title + ": " + profanitiesAmmount);
+            }
         }
     }
 }
