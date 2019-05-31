@@ -16,9 +16,9 @@ namespace searchingCurses
             string title = Console.ReadLine();*/
             var songsLyrics = new SongLyrics("Eminem", "Without me");
             var profanalityFinder = new ProfanalityFinder();
-            Console.WriteLine(profanalityFinder.countBadWords(songsLyrics.lyrics));
+            Console.WriteLine(profanalityFinder.GetBadWordsSummary(songsLyrics));
             // var censored = profanalityFinder.Censore(songsLyrics.lyrics);
-            var badWordsAmount = profanalityFinder.countBadWords(songsLyrics.lyrics);
+            //var badWordsAmount = profanalityFinder.countBadWords(songsLyrics.lyrics);
             Console.WriteLine(badWordsAmount);
 
             Console.WriteLine("Done");
