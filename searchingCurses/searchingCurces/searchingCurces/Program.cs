@@ -8,8 +8,9 @@ namespace searchingCurses
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            var webCache = new WebCache();
             var eminem = new Artist("Eminem");
             eminem.songTitles = new List<string>
             {
@@ -17,10 +18,11 @@ namespace searchingCurses
                 "Without Me",
                 "Sing for the Moment",
             };
-            eminem.ShowProfanityStats();
-            var songsLyrics = new Song("Eminem", "Without me");
+            eminem.CalculateSwearAndWordCount();
+            eminem.DisplayStatistics();
+            //var songsLyrics = new Song("Eminem", "Without me");
             var profanalityFinder = new ProfanityFinder();
-            Console.WriteLine(profanalityFinder.GetBadWordsSummary(songsLyrics));
+            //Console.WriteLine(profanalityFinder.GetBadWordsSummary(songsLyrics));
             // var censored = profanalityFinder.Censore(songsLyrics.lyrics);
            // var badWordsAmount = profanalityFinder.countBadWords(songsLyrics.lyrics);
            // Console.WriteLine(badWordsAmount);
@@ -30,26 +32,11 @@ namespace searchingCurses
         }
     }
 
-    internal class Artist
+    class WebCache
     {
-        public string name;
-        internal List<string> songTitles;
-
-        public Artist(string name)
+        public WebCache()
         {
-            this.name = name;
-        }
 
-        public void ShowProfanityStats()
-        {
-            var profanityFinder = new ProfanityFinder();
-
-            foreach (var title in songTitles)
-            {
-                var song = new Song(name, title);
-                var profanitiesAmmount = profanityFinder.countBadWords(song.lyrics);
-                Console.WriteLine(song.title + ": " + profanitiesAmmount);
-            }
         }
     }
 }
