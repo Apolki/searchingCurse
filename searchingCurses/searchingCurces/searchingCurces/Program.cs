@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,7 @@ namespace searchingCurses
         public void SaveInCache(string url, string data)
         {
             var insertSQL = new SQLiteCommand("INSERT INTO cache (url, data) VALUES (?,?)", connection);
-            sql.Parametrs.Add(url, Dbtype, String);
+            sql.Parametrs.Add(url, DbType, String);
         }
     }
 }
