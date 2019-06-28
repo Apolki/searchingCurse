@@ -27,7 +27,7 @@ namespace searchingCurses
                 var song = new Song(name, title);
                 swearCount += profanityFinder.countBadWords(song.lyrics);
                 wordCount += song.CountWords();
-               
+
             }
         }
 
